@@ -28,7 +28,7 @@ O algoritmo de Knapsack Problem é útil para a organização de alocação de i
 
 
 ## Vídeo
-[apresentação](https://youtu.be/FKt3Z0G2z2E)
+[apresentação](https://youtu.be/1DcySA6Nk4I)
 
 
 
