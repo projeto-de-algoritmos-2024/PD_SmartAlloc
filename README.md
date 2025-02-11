@@ -10,7 +10,7 @@
 | 22/1037993  |  Patrícia Helena Macedo da Silva |
 
 ## Sobre 
-![home](assets/logoPD.png)
+![home](assets/header_pdf.png)
 
 Este projeto é uma aplicação em Python que apresenta uma interface gráfica interativa com dois algoritmos do módulo PD. Através dessa aplicação, o usuário pode escolher entre duas opções para resolver problemas práticos de alocação de tempo e recursos visando obter o lucro máximo. Os algoritmos são:
 
@@ -39,7 +39,7 @@ O algoritmo de Knapsack Problem é útil para a organização de alocação de i
 
 ## Pré-requisitos:
 - Python 3.12.7 ou superior
-- Bibliotecas: Pillow, reportlab e Tkinter
+- Bibliotecas: Flet e reportlab
 
 ## Como rodar o projeto:
 
@@ -51,22 +51,19 @@ O algoritmo de Knapsack Problem é útil para a organização de alocação de i
 
    Caso você não tenha o Python 3.12.7 instalado, faça o download no [site oficial do Python](https://www.python.org/downloads/release/python-3127/).
 
-2. Instale a biblioteca **Pillow** utilizando o **pip**. No terminal, execute o seguinte comando:
+2. Instale a biblioteca **Flet** utilizando o **pip**. No terminal, execute o seguinte comando:
 
    ```bash
-   pip install pillow
+   pip install flet
    ```
-3. O Tkinter já vem pré-instalado com a maioria das distribuições do Python. No entanto, caso você esteja utilizando uma distribuição que não inclua o Tkinter, você pode instalá-lo utilizando o seguinte comando:
-   ```bash
-   sudo apt-get install python3-tk
-   ```
-4. Instale a biblioteca **reportlab** utilizando o **pip**. No terminal, execute o seguinte comando:
+
+3. Instale a biblioteca **reportlab** utilizando o **pip**. No terminal, execute o seguinte comando:
 
    ```bash
    pip install reportlab
    ```
 
-5. Rodando o projeto:
+4. Rodando o projeto:
 
    ```bash
    python3 main.py
@@ -105,9 +102,11 @@ Após calcular, o algoritmo irá te mostrar a sequência de trabalhos que você 
 O algoritmo do problema da mochila (Knapsack Problem) organiza a alocação de itens, no nosso contexto, itens para veículos de entrega, selecionando os melhores itens a serem alocados, visando maximizar o preenchimento do veículo e o lucro.
 
 Como usar:
+Primeiramente insira a capacidade máxima do veiculo.
 Insira o nome do item, seu peso e seu valor:
 Exemplo:
 ```
+11
 Entrega1, 5, 18 
 ```
 Após inserir todos os itens, clique no botão "Calcular".
@@ -115,6 +114,7 @@ O algoritmo irá selecionar quais itens alocar para aproveitar o espaço da moch
 Exemplo de uso:
 
  ```
+11
 Entrega Jorge, 1, 1
 Pacote Maria, 2, 6
 Encomenda Carlos, 5, 18
