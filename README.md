@@ -28,7 +28,7 @@ O algoritmo de Knapsack Problem é útil para a organização de alocação de i
 
 ## Pré-requisitos:
 - Python 3.12.7 ou superior
-- Bibliotecas: Pillow, reportlab e Tkinter
+- Bibliotecas: Flet e reportlab
 
 ## Como rodar o projeto:
 
