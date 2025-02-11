@@ -50,29 +50,31 @@ def calcular_weighted_interval_scheduling(trabalhos):
 
 def veiculo_entrega(capacidade, itens):
     n = len(itens)
-    M = [[0] * (capacidade + 1) for _ in range(n + 1)]
+    M = [[0] * (int(capacidade * 10) + 1) for _ in range(n + 1)]
     
     for i in range(1, n + 1):
         nome, peso, lucro = itens[i - 1]
-        for w in range(capacidade + 1):
+        peso = int(peso * 10)
+        for w in range(int(capacidade * 10) + 1):
             if peso > w:
                 M[i][w] = M[i - 1][w]
             else:
                 M[i][w] = max(M[i - 1][w], lucro + M[i - 1][w - peso])
     
     selecionados = []
-    w = capacidade
+    w = int(capacidade * 10)
     for i in range(n, 0, -1):
         if M[i][w] != M[i - 1][w]:
             selecionados.append(itens[i - 1])
-            w -= itens[i - 1][1]
+            w -= int(itens[i - 1][1] * 10)
     
-    return M[n][capacidade], selecionados
+    return M[n][int(capacidade * 10)], selecionados
+
 
 def main(page: ft.Page):
     page.title = "SmartAlloc"
     page.scroll = "adaptive"
-    page.padding = ft.Padding(left=70, top=10, right=0, bottom=10)
+    page.padding = ft.Padding(left=70, top=10, right=70, bottom=10)
 
     def gerar_pdf(resultado):
         pdf = PDF(resultado, diretorio_atual)
@@ -98,6 +100,7 @@ def main(page: ft.Page):
     ], alignment="center")
     
     def mostrar_intervalo_peso(e):
+        page.padding = ft.Padding(left=70, top=10, right=0, bottom=10)
         page.clean()
         page.add(header, ft.ElevatedButton("Voltar", on_click=voltar_home))
         interval_elementos = ft.Column()
@@ -133,22 +136,23 @@ def main(page: ft.Page):
         page.update()
     
     def mostrar_veiculo_entrega(e):
+        page.padding = ft.Padding(left=70, top=10, right=0, bottom=10)
         page.clean()
         page.add(header, ft.ElevatedButton("Voltar", on_click=voltar_home))
         veiculo_elementos = ft.Column()
-        capacidade_input = ft.TextField(label="Capacidade do Veículo (em kg)", width=200)
-        itens_input = ft.TextField(label="Insira um item por linha (Nome, Peso, Lucro)", multiline=True, min_lines=5)
+        capacidade_input = ft.TextField(label="Capacidade do Veículo (em kg)", width=600)
+        itens_input = ft.TextField(label="Insira um item por linha (Nome, Peso, Lucro)", multiline=True, height=150, width=600)
         resultado_text = ft.Text("", selectable=True)
         
         def calcular_veiculo_entrega_action(e):
             try:
-                capacidade = int(capacidade_input.value)
+                capacidade = float(capacidade_input.value)
                 itens_brutos = itens_input.value.strip().split("\n")
                 itens = []
                 
                 for item in itens_brutos:
                     nome, peso, lucro = item.split(",")
-                    itens.append((nome.strip(), int(peso.strip()), int(lucro.strip())))
+                    itens.append((nome.strip(), float(peso.strip()), float(lucro.strip())))
                 
                 lucro_maximo, selecionados = veiculo_entrega(capacidade, itens)
                 
@@ -157,9 +161,13 @@ def main(page: ft.Page):
                     resultado += f"{nome} (Peso: {peso}, Lucro: {lucro})\n"
                 
                 resultado_text.value = resultado.strip()
+                
+                gerar_pdf_btn = ft.ElevatedButton("Gerar PDF", on_click=lambda e: gerar_pdf(resultado))
+                veiculo_elementos.controls.append(gerar_pdf_btn)
+
                 page.update()
             except ValueError:
-                resultado_text.value = "Erro de entrada! Formato correto: Nome, Peso, Lucro"
+                resultado_text.value = "Erro de Entrada: Formato inválido!"
                 page.update()
         
         def gerar_pdf_veiculo_action(e):
@@ -167,17 +175,17 @@ def main(page: ft.Page):
         
         veiculo_controles = ft.Column([
             ft.Text("Veículo de Entrega - Maximização de Lucro", size=30, weight="bold"),
-            ft.Text("\nInsira a capacidade do veículo e os itens no formato: Nome, Peso, Lucro\nEx: Item1, 10, 100\n\n"),
+            ft.Text("\nInsira a capacidade do veículo e os itens no formato: Nome, Peso, Lucro\nEx: Item1, 10.5, 99.99\n\n"),
             capacidade_input,
             itens_input,
             ft.ElevatedButton("Calcular", on_click=calcular_veiculo_entrega_action),
             ft.Text("\n"),
             resultado_text,
-            ft.ElevatedButton("Gerar PDF", on_click=gerar_pdf_veiculo_action)
         ])
         
         page.add(veiculo_controles)
         page.update()
+
     
     elementos_home = ft.Column([
         ft.Text("Este projeto oferece duas opções para resolver problemas práticos de alocação de tempo e recursos, com o objetivo de maximizar o lucro:\n✅ Weighted Interval Scheduling: Organiza seu dia para realizar os trabalhos com maior retorno financeiro dentro de um intervalo específico. O usuário insere horários de início, fim e o valor do trabalho, e o algoritmo determina o melhor conjunto de tarefas para maximizar o lucro.\n✅ Knapsack Problem: Organiza a alocação de itens para veículos de entrega. O usuário insere a capacidade do veículo, itens, peso e lucro de cada item, e o algoritmo seleciona os melhores itens para maximizar o uso da capacidade do veículo e o lucro obtido."),
