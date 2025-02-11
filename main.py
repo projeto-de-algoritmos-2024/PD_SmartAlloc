@@ -70,7 +70,6 @@ def veiculo_entrega(capacidade, itens):
     
     return M[n][int(capacidade * 10)], selecionados
 
-
 def main(page: ft.Page):
     page.title = "SmartAlloc"
     page.scroll = "adaptive"
@@ -94,7 +93,7 @@ def main(page: ft.Page):
         page.add(header, elementos_home)
         page.update()
 
-    header = ft.Row([
+    header = ft.Row([ 
         ft.Image(src=diretorio_atual + "/assets/logoPD.png", width=100, height=100),
         ft.Text("SmartAlloc", size=44, weight="bold"),
     ], alignment="center")
@@ -120,10 +119,9 @@ def main(page: ft.Page):
 
             interval_elementos.controls.append(ft.Text(resultado))
 
-
             page.update()
         
-        intervalo_controles = ft.Column([
+        intervalo_controles = ft.Column([ 
             ft.Text("Agendamento de intervalo com peso", size=30, weight="bold"),
             ft.Text("\nInsira um trabalho por linha no formato: Descrição, hora início, hora fim, valor\nEx: Instalar luz da Fernanda Torres, 08:00, 11:00, 30.99\n\n"),
             input_area,
@@ -163,31 +161,33 @@ def main(page: ft.Page):
                 resultado_text.value = resultado.strip()
                 
                 gerar_pdf_btn = ft.ElevatedButton("Gerar PDF", on_click=lambda e: gerar_pdf(resultado))
-                veiculo_elementos.controls.append(gerar_pdf_btn)
+
+                veiculo_elementos.controls.clear()
+
+                if resultado != 'Erro de Entrada: Formato inválido!':
+                    veiculo_elementos.controls.append(resultado_text)
+                    veiculo_elementos.controls.append(gerar_pdf_btn)
 
                 page.update()
             except ValueError:
                 resultado_text.value = "Erro de Entrada: Formato inválido!"
                 page.update()
+
         
-        def gerar_pdf_veiculo_action(e):
-            gerar_pdf(resultado_text.value)
-        
-        veiculo_controles = ft.Column([
+        veiculo_controles = ft.Column([ 
             ft.Text("Veículo de Entrega - Maximização de Lucro", size=30, weight="bold"),
             ft.Text("\nInsira a capacidade do veículo e os itens no formato: Nome, Peso, Lucro\nEx: Item1, 10.5, 99.99\n\n"),
             capacidade_input,
             itens_input,
             ft.ElevatedButton("Calcular", on_click=calcular_veiculo_entrega_action),
             ft.Text("\n"),
-            resultado_text,
+            veiculo_elementos
         ])
         
         page.add(veiculo_controles)
         page.update()
 
-    
-    elementos_home = ft.Column([
+    elementos_home = ft.Column([ 
         ft.Text("Este projeto oferece duas opções para resolver problemas práticos de alocação de tempo e recursos, com o objetivo de maximizar o lucro:\n✅ Weighted Interval Scheduling: Organiza seu dia para realizar os trabalhos com maior retorno financeiro dentro de um intervalo específico. O usuário insere horários de início, fim e o valor do trabalho, e o algoritmo determina o melhor conjunto de tarefas para maximizar o lucro.\n✅ Knapsack Problem: Organiza a alocação de itens para veículos de entrega. O usuário insere a capacidade do veículo, itens, peso e lucro de cada item, e o algoritmo seleciona os melhores itens para maximizar o uso da capacidade do veículo e o lucro obtido."),
         ft.ElevatedButton("Agendamento de trabalhos", on_click=mostrar_intervalo_peso),
         ft.ElevatedButton("Veículo de Entrega", on_click=mostrar_veiculo_entrega),
