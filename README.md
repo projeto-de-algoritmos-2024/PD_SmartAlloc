@@ -10,7 +10,7 @@
 | 22/1037993  |  Patrícia Helena Macedo da Silva |
 
 ## Sobre 
-![home](assets/logoPD.png)
+![home](assets/header_pdf.png)
 
 Este projeto é uma aplicação em Python que apresenta uma interface gráfica interativa com dois algoritmos do módulo PD. Através dessa aplicação, o usuário pode escolher entre duas opções para resolver problemas práticos de alocação de tempo e recursos visando obter o lucro máximo. Os algoritmos são:
 
@@ -40,22 +40,19 @@ O algoritmo de Knapsack Problem é útil para a organização de alocação de i
 
    Caso você não tenha o Python 3.12.7 instalado, faça o download no [site oficial do Python](https://www.python.org/downloads/release/python-3127/).
 
-2. Instale a biblioteca **Pillow** utilizando o **pip**. No terminal, execute o seguinte comando:
+2. Instale a biblioteca **Flet** utilizando o **pip**. No terminal, execute o seguinte comando:
 
    ```bash
-   pip install pillow
+   pip install flet
    ```
-3. O Tkinter já vem pré-instalado com a maioria das distribuições do Python. No entanto, caso você esteja utilizando uma distribuição que não inclua o Tkinter, você pode instalá-lo utilizando o seguinte comando:
-   ```bash
-   sudo apt-get install python3-tk
-   ```
-4. Instale a biblioteca **reportlab** utilizando o **pip**. No terminal, execute o seguinte comando:
+
+3. Instale a biblioteca **reportlab** utilizando o **pip**. No terminal, execute o seguinte comando:
 
    ```bash
    pip install reportlab
    ```
 
-5. Rodando o projeto:
+4. Rodando o projeto:
 
    ```bash
    python3 main.py
