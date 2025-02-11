@@ -20,6 +20,17 @@ O algoritmo de Weighted Interval Scheduling ajuda o usuário a organizar seu dia
 2. ### Knapsack Problem
 O algoritmo de Knapsack Problem é útil para a organização de alocação de itens, no nosso contexto, itens para veiculos de entrega. O usuário insere a capacidade do veiculo,item, peso e lucro daquel item e o algoritmo seleciona os melhores itens a serem alocados visando encher ao maximo o veiuclo e o lucro. 
 
+## Screenshots
+![home](assets/principal.png)
+![Weighted-Interval-Scheduling](assets/Weight.png)
+![Knapsack-Problem](assets/Knapsack.png)
+![pdf](assets/pdfKnapsack.png)
+
+
+## Vídeo
+[apresentação](https://youtu.be/FKt3Z0G2z2E)
+
+
 
 
 ## Instalação 

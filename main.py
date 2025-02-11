@@ -180,7 +180,7 @@ def main(page: ft.Page):
         page.update()
     
     elementos_home = ft.Column([
-        ft.Text("COLOCAR AQUI O TEXTO DE APRESENTAÇÃO"),
+        ft.Text("Este projeto oferece duas opções para resolver problemas práticos de alocação de tempo e recursos, com o objetivo de maximizar o lucro:\n✅ Weighted Interval Scheduling: Organiza seu dia para realizar os trabalhos com maior retorno financeiro dentro de um intervalo específico. O usuário insere horários de início, fim e o valor do trabalho, e o algoritmo determina o melhor conjunto de tarefas para maximizar o lucro.\n✅ Knapsack Problem: Organiza a alocação de itens para veículos de entrega. O usuário insere a capacidade do veículo, itens, peso e lucro de cada item, e o algoritmo seleciona os melhores itens para maximizar o uso da capacidade do veículo e o lucro obtido."),
         ft.ElevatedButton("Agendamento de trabalhos", on_click=mostrar_intervalo_peso),
         ft.ElevatedButton("Veículo de Entrega", on_click=mostrar_veiculo_entrega),
         ft.Text("\n\n\n")
