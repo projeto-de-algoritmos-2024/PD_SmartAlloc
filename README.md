@@ -91,9 +91,11 @@ Após calcular, o algoritmo irá te mostrar a sequência de trabalhos que você 
 O algoritmo do problema da mochila (Knapsack Problem) organiza a alocação de itens, no nosso contexto, itens para veículos de entrega, selecionando os melhores itens a serem alocados, visando maximizar o preenchimento do veículo e o lucro.
 
 Como usar:
+Primeiramente insira a capacidade máxima do veiculo.
 Insira o nome do item, seu peso e seu valor:
 Exemplo:
 ```
+11
 Entrega1, 5, 18 
 ```
 Após inserir todos os itens, clique no botão "Calcular".
@@ -101,6 +103,7 @@ O algoritmo irá selecionar quais itens alocar para aproveitar o espaço da moch
 Exemplo de uso:
 
  ```
+11
 Entrega Jorge, 1, 1
 Pacote Maria, 2, 6
 Encomenda Carlos, 5, 18
